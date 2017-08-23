@@ -9,7 +9,7 @@ import Routes from './Routes';
 import { Router, browserHistory } from 'react-router';
 
 
-//ReactDom.render(<Router history={browserHistory} routes={routes} />, document.getElementById('react-app'));
+ReactDom.render(<Router history={browserHistory} routes={Routes} />, document.getElementById('react-app'));
 
 //ReactDom.render(<Home />, document.getElementById('react-app'));
 

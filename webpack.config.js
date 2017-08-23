@@ -9,7 +9,8 @@ module.exports = {
   entry: {
     Index: ['webpack-dev-server/client?http://' + ip + ':3000',
                  'webpack/hot/only-dev-server',
-                './reactApp/src/index.js'
+                './reactApp/src/index.js',
+                './reactApp/src/Routes.js',
                 ],
      vendors: ['react'],
   },
