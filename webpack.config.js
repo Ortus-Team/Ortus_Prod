@@ -11,6 +11,7 @@ module.exports = {
                  'webpack/hot/only-dev-server',
                 './reactApp/src/index.js',
                 './reactApp/src/Routes.js',
+                './reactApp/src/App.js',
                 ],
      vendors: ['react'],
   },

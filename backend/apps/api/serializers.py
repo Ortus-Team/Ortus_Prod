@@ -17,13 +17,13 @@ class UserSerializer(serializers.ModelSerializer):
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ('id', 'name', 'image')
+        fields = ('id', 'owner', 'image')
 
 
 class OrgSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='org.name')
-    join_date = serializers.DateTimeField(source='org.join_date')
-    description = serializers.CharField(source='org.description')
+    name = serializers.CharField()
+    join_date = serializers.DateTimeField()
+    description = serializers.CharField()
 
     class Meta:
         model = Org
@@ -31,11 +31,11 @@ class OrgSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='event.name')
-    event_date = serializers.DateTimeField(source='event.event_date')
-    access_level = serializers.CharField(source='event.access_level')
-    location = serializers.CharField(source='event.location')
-    description = serializers.CharField(source='event.description')
+    name = serializers.CharField()
+    event_date = serializers.DateTimeField()
+    access_level = serializers.CharField()
+    location = serializers.CharField()
+    description = serializers.CharField()
 
     class Meta:
         model = Event
@@ -43,9 +43,9 @@ class EventSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='post.name')
-    created_date = serializers.DateTimeField(source='post.created_date')
-    description = serializers.CharField(source='post.description')
+    name = serializers.CharField()
+    created_date = serializers.DateTimeField()
+    description = serializers.CharField()
 
     class Meta:
         model = Post
@@ -61,101 +61,101 @@ class SignUpSerializer(serializers.ModelSerializer):
 
 class FollowerToOrgSerializer(serializers.ModelSerializer):
     follower = UserSerializer
-    orgs = OrgSerializer(many=True)
+    org = OrgSerializer
 
     class Meta:
         model = FollowerToOrg
-        fields = ('follower', 'orgs')
+        fields = ('follower', 'org')
 
 
 class UserToOrgSerializer(serializers.ModelSerializer):
     user = UserSerializer
-    orgs = OrgSerializer(many=True)
+    org = OrgSerializer
 
     class Meta:
         model = UserToOrg
-        fields = ('user', 'orgs')
+        fields = ('user', 'org')
 
 
 class PostToOrgSerializer(serializers.ModelSerializer):
     org = OrgSerializer
-    posts = PostSerializer(many=True)
+    post = PostSerializer
 
     class Meta:
         model = PostToOrg
-        fields = ('org', 'posts')
+        fields = ('org', 'post')
 
 
 class PostToUserSerializer(serializers.ModelSerializer):
     user = UserSerializer
-    posts = PostSerializer(many=True)
+    post = PostSerializer
 
     class Meta:
         model = PostToUser
-        fields = ('user', 'posts')
+        fields = ('user', 'post')
 
 
 class PhotoToOrgSerializer(serializers.ModelSerializer):
     org = OrgSerializer
-    photos = PhotoSerializer(many=True)
+    photo = PhotoSerializer
 
     class Meta:
         model = PhotoToOrg
-        fields = ('org', 'photos')
+        fields = ('org', 'photo')
 
 
 class PhotoToUserSerializer(serializers.ModelSerializer):
     user = UserSerializer
-    photos = PhotoSerializer(many=True)
+    photo = PhotoSerializer
 
     class Meta:
         model = PhotoToUser
-        fields = ('user', 'photos')
+        fields = ('user', 'photo')
 
 
 class PhotoToPostSerializer(serializers.ModelSerializer):
     post = PostSerializer
-    photos = PhotoSerializer(many=True)
+    photo = PhotoSerializer
 
     class Meta:
         model = PhotoToPost
-        fields = ('post', 'photos')
+        fields = ('post', 'photo')
 
 
 class EventToPostSerializer(serializers.ModelSerializer):
-    posts = PostSerializer(many=True)
+    post = PostSerializer
     event = EventSerializer
 
     class Meta:
         model = EventToPost
-        fields = ('event', 'posts')
+        fields = ('event', 'post')
 
 
 class UserToPostSerializer(serializers.ModelSerializer):
-    posts = PostSerializer(many=True)
+    post = PostSerializer
     user = UserSerializer
 
     class Meta:
         model = UserToPost
-        fields = ('user', 'posts')
+        fields = ('user', 'post')
 
 
 class OrgToPostSerializer(serializers.ModelSerializer):
-    posts = PostSerializer(many=True)
+    post = PostSerializer
     org = OrgSerializer
 
     class Meta:
         model = OrgToPost
-        fields = ('org', 'posts')
+        fields = ('org', 'post')
 
 
 class PhotoToEventSerializer(serializers.ModelSerializer):
-    photos = PhotoSerializer(many=True)
+    photo = PhotoSerializer
     event = EventSerializer
 
     class Meta:
         model = PhotoToEvent
-        fields = ('event', 'photos')
+        fields = ('event', 'photo')
 
 
 class EventToOrgSerializer(serializers.ModelSerializer):

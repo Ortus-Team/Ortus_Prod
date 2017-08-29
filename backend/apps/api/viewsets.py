@@ -130,8 +130,9 @@ def follower_org_list(request, pk):
 	except User.DoesNotExist:
 		return HttpResponse(status=404)
 	if request.method == 'GET':
-		org_list = FollowerToOrg.objects.filter(follower__exact=user)
-		serializer = OrgSerializer(org_list, many=True)
+		member = user.member
+		org_list = FollowerToOrg.objects.filter(follower__exact=member)
+		serializer = FollowerToOrgSerializer(org_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -149,8 +150,9 @@ def user_org_list(request, pk):
 	except User.DoesNotExist:
 		return HttpResponse(status=404)
 	if request.method == 'GET':
-		org_list = UserToOrg.objects.filter(user__exact=user)
-		serializer = OrgSerializer(org_list, many=True)
+		member = user.member
+		org_list = UserToOrg.objects.filter(user__exact=member)
+		serializer = UserToOrgSerializer(org_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -168,7 +170,7 @@ def post_org_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		post_list = PostToOrg.objects.filter(org__exact=org)
-		serializer = PostSerializer(post_list, many=True)
+		serializer = PostToOrgSerializer(post_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -186,7 +188,7 @@ def photo_org_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		photo_list = PhotoToOrg.objects.filter(org__exact=org)
-		serializer = PhotoSerializer(photo_list, many=True)
+		serializer = PhotoToOrgSerializer(photo_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -203,8 +205,9 @@ def post_user_list(request, pk):
 	except User.DoesNotExist:
 		return HttpResponse(status=404)
 	if request.method == 'GET':
-		post_list = PostToUser.objects.filter(user__exact=user)
-		serializer = PostSerializer(post_list, many=True)
+		member = user.member
+		post_list = PostToUser.objects.filter(user__exact=member)
+		serializer = PostToUserSerializer(post_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -221,8 +224,9 @@ def photo_user_list(request, pk):
 	except User.DoesNotExist:
 		return HttpResponse(status=404)
 	if request.method == 'GET':
-		photo_list = PhotoToUser.objects.filter(user__exact=user)
-		serializer = PhotoSerializer(photo_list, many=True)
+		member = user.member
+		photo_list = PhotoToUser.objects.filter(user__exact=member)
+		serializer = PhotoToUserSerializer(photo_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -240,7 +244,7 @@ def photo_post_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		photo_list = PhotoToPost.objects.filter(post__exact=post)
-		serializer = PhotoSerializer(photo_list, many=True)
+		serializer = PhotoToPostSerializer(photo_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -258,7 +262,7 @@ def event_post_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		post_list = EventToPost.objects.filter(event__exact=event)
-		serializer = PostSerializer(post_list, many=True)
+		serializer = EventToPostSerializer(post_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -275,8 +279,9 @@ def user_post_list(request, pk):
 	except User.DoesNotExist:
 		return HttpResponse(status=404)
 	if request.method == 'GET':
-		post_list = UserToPost.objects.filter(user__exact=user)
-		serializer = PostSerializer(post_list, many=True)
+		member = user.member
+		post_list = UserToPost.objects.filter(user__exact=member)
+		serializer = UserToPostSerializer(post_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -294,7 +299,7 @@ def org_post_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		post_list = OrgToPost.objects.filter(org__exact=org)
-		serializer = PostSerializer(post_list, many=True)
+		serializer = OrgToPostSerializer(post_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -312,7 +317,7 @@ def photo_event_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		photo_list = PhotoToEvent.objects.filter(event__exact=event)
-		serializer = PhotoSerializer(photo_list, many=True)
+		serializer = PhotoToEventSerializer(photo_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -330,7 +335,7 @@ def event_org_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		event_list = EventToOrg.objects.filter(org__exact=org)
-		serializer = EventSerializer(event_list, many=True)
+		serializer = EventToOrgSerializer(event_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)
@@ -348,7 +353,7 @@ def officer_org_list(request, pk):
 		return HttpResponse(status=404)
 	if request.method == 'GET':
 		officer_list = OfficerToOrg.objects.filter(org__exact=org)
-		serializer = UserSerializer(officer_list, many=True)
+		serializer = OfficerToOrgSerializer(officer_list, many=True)
 		return JsonResponse(serializer.data, safe=False)
 	elif request.method == 'PUT':
 		data = JSONParser().parse(request)

@@ -5,7 +5,7 @@ import Home from './modules/Home/Home';
 import GroupPage from './modules/GroupPage/GroupPage';
 
 export default (
-  <Route path='/' component={App}>
+  <Route path='/' component={Home}>
     <IndexRoute component={Home} />
     <Route path='grouppage' component={GroupPage} />
   </Route>
