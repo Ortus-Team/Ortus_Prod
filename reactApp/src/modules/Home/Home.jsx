@@ -6,7 +6,6 @@ import { DynamicContent } from './components/DynamicContent/DynamicContent';
 import { UpcomingEvents } from './components/UpcomingEvents/UpcomingEvents';
 import { FeaturedGroups } from './components/FeaturedGroups/FeaturedGroups';
 import { GetInvolved } from './components/GetInvolved/GetInvolved';
-import { styles } from './Home.scss';
 
 /*
 Home
@@ -18,7 +17,7 @@ Home
     Get Involved
 */
 
-export class Home extends React.Component {
+export default class Home extends React.Component {
   render() {
     const h1Style = {
       backgroundColor: 'red'
@@ -26,13 +25,9 @@ export class Home extends React.Component {
     
     return (
         <div>
-          {/*<Navbar />*/}
           <Navbar />
-          <DynamicContent />
-          <UpcomingEvents />
-          <FeaturedGroups />
-          <GetInvolved />
-          <h1 style={h1Style}>Home Page!!</h1>
+          <h1>Home Page!!</h1>
+            asdfasdf
         </div>
     );
   }

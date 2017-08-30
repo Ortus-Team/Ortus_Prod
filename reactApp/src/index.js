@@ -5,11 +5,14 @@ import ReactDom from 'react-dom'
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './App';
-import Routes from './Routes'; 
-import { Router, browserHistory } from 'react-router';
+import routes from './routes';
+import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router'
 
 
-ReactDom.render(<Router history={browserHistory} routes={Routes} />, document.getElementById('react-app'));
+ReactDom.render((
+   <Router history = {browserHistory} routes={routes}>
+   </Router>
+), document.getElementById('react-app'));
 
 //ReactDom.render(<Home />, document.getElementById('react-app'));
 
@@ -83,7 +86,6 @@ class Main extends React.Component {
 		return (
 			<div>
 				<h1>Ortus Member</h1>
-				<Home />
 				<ul>
 					<li>members should be here....</li>
 				</ul> 

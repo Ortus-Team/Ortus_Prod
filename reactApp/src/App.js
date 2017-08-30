@@ -6,14 +6,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        Hello World
-        {Home}
-        <Router history={browserHistory}>
-          <Route path='/' component={Home} />
-        </Router>
+        Hello Worldasdfsa
       </div>
     );
   }
 }
-
-const Home = <h1>Hello from Home!</h1>
