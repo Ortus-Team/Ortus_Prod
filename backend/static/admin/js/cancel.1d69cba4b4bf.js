@@ -1,9 +1,8 @@
-(function($) {
-    'use strict';
-    $(function() {
-        $('.cancel-link').click(function(e) {
-            e.preventDefault();
-            window.history.back();
-        });
+(function ($) {
+  $(() => {
+    $(".cancel-link").click((e) => {
+      e.preventDefault();
+      window.history.back();
     });
-})(django.jQuery);
+  });
+}(django.jQuery));

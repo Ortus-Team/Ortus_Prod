@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+const React = require("react");
+const ReactDOM = require("react-dom");
 
 /*
 NavBar (On all pages)
@@ -14,14 +14,14 @@ NavBar (On all pages)
 export class UpcomingEvents extends React.Component {
   render() {
     const dc = {
-        color: 'red'
-    }
+      color: "red",
+    };
 
     return (
-        <div styles={dc}>
-            
-            <h1 styles={dc}>Upcoming Events</h1>
-        </div>
+      <div styles={dc}>
+
+        <h1 styles={dc}>Upcoming Events</h1>
+      </div>
     );
   }
-};
+}

@@ -18,7 +18,6 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -156,16 +155,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'), #  django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, os.pardir, 'frontend', 'build'),
+]
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
+
 
 # Facebook configuration
 SOCIAL_AUTH_FACEBOOK_KEY = '110760716216901'
