@@ -1,5 +1,6 @@
 <!-- base.html -->
-{% load static %}
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +9,8 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <script src="{% static "js/vendor.bundle.js" %}"></script>
-    {% block content %}{% endblock %}
-    <script src="{% static "js/bundle.js" %}"></script>
+	{% block content %}{% endblock %}
+    <script src=frontend/build/js/vendor.bundle.js /> 
+    <script src=frontend/build/js/bundle.js />
 </body>
 </html>

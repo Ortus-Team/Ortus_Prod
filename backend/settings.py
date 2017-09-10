@@ -159,7 +159,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, os.pardir, 'frontend', 'build'),
 ]
 
-
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'frontend/build',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 # Facebook configuration
 SOCIAL_AUTH_FACEBOOK_KEY = '110760716216901'
