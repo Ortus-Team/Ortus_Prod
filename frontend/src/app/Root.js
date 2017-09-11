@@ -8,15 +8,11 @@ import urls from "../app/urls";
 
 const store = configureStore();
 
-
 class Root extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <Router history={history}>
-          {urls}
-        </Router>
-      </Provider>
+      <div> ASDFASDFDSAF
+      </div>
     );
   }
 }
